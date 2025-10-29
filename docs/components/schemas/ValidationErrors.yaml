@@ -1,0 +1,20 @@
+type: object
+properties:
+  error:
+    type: string
+    description: Validation error message
+    example: Title is required
+  errors:
+    type: array
+    description: Array of detailed validation errors
+    items:
+      type: object
+      properties:
+        field:
+          type: string
+          description: The field that failed validation
+          example: title
+        message:
+          type: string
+          description: The validation error message
+          example: Title is required and cannot be empty
