@@ -58,6 +58,37 @@ paths:
                   error:
                     type: string
                     example: Title is required
+  /tasks/{id}:
+    get:
+      summary: Get a task by ID
+      description: Retrieve a single task by its unique identifier
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the task
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Task found successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Validation error - invalid ID format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrors'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
 components:
   schemas:
     Task:
@@ -72,3 +103,31 @@ components:
         completed:
           type: boolean
           example: false
+    ValidationErrors:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Validation error message
+          example: Title is required
+        errors:
+          type: array
+          description: Array of detailed validation errors
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: The field that failed validation
+                example: title
+              message:
+                type: string
+                description: The validation error message
+                example: Title is required and cannot be empty
+    NotFoundError:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message indicating resource was not found
+          example: Task not found

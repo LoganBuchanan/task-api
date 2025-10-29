@@ -1,0 +1,6 @@
+type: object
+properties:
+  error:
+    type: string
+    description: Error message indicating resource was not found
+    example: 'Task not found'

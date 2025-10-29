@@ -1,0 +1,30 @@
+get:
+  summary: Get a task by ID
+  description: Retrieve a single task by its unique identifier
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The unique identifier of the task
+      schema:
+        type: integer
+        example: 1
+  responses:
+    '200':
+      description: Task found successfully
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    '400':
+      description: Validation error - invalid ID format
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/ValidationErrors.yaml
+    '404':
+      description: Task not found
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/NotFoundError.yaml
