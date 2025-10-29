@@ -15,6 +15,10 @@ app.use(morgan('tiny'));
 const specs = yaml.load(fs.readFileSync('./public/bundled.yaml', 'utf8'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.use('/tasks', taskRoutes);
 
 app.use((req, res, next) => {

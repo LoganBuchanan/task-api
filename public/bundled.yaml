@@ -7,6 +7,24 @@ servers:
   - url: http://localhost:3000
     description: Development server
 paths:
+  /health:
+    get:
+      summary: Health check
+      description: Check if the API server is running and healthy
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                    description: Health status of the server
   /tasks:
     get:
       summary: Get all tasks

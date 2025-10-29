@@ -7,6 +7,8 @@ servers:
   - url: http://localhost:3000
     description: 'Development server'
 paths:
+  /health:
+    $ref: paths/health.yaml
   /tasks:
     $ref: paths/tasks.yaml
 components:
