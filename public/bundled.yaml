@@ -5,26 +5,10 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:3000
-    description: Development server
+    description: Local Development server
+  - url: https://task-api-7944.onrender.com
+    description: Production server on render
 paths:
-  /health:
-    get:
-      summary: Health check
-      description: Check if the API server is running and healthy
-      tags:
-        - Health
-      responses:
-        '200':
-          description: Server is healthy
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: ok
-                    description: Health status of the server
   /tasks:
     get:
       summary: Get all tasks

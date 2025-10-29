@@ -5,10 +5,10 @@ info:
   version: '1.0.0'
 servers:
   - url: http://localhost:3000
-    description: 'Development server'
+    description: 'Local Development server'
+  - url: https://task-api-7944.onrender.com
+    description: 'Production server on render'
 paths:
-  /health:
-    $ref: paths/health.yaml
   /tasks:
     $ref: paths/tasks.yaml
 components:
